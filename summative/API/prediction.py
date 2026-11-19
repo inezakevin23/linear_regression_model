@@ -17,7 +17,7 @@ API_DIR = Path(__file__).resolve().parent
 MODEL_PATH = Path(os.getenv("MODEL_PATH", str(API_DIR / "best_model.pkl")))
 
 DEFAULT_ORIGINS = (
-    "https://onrender.com,"
+    "https://edulabour-rwanda-api.onrender.com,"
     "http://localhost:5000,"
     "http://127.0.0.1:5000"
 )
