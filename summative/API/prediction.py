@@ -84,6 +84,13 @@ app = FastAPI(
     version="1.0.0",
 )
 
+# CORS Middleware Configuration:
+# What we allow: only our deployed Render domain and local Flutter/FastAPI debug origins, 
+# only GET and POST HTTP methods, only Content-Type and Authorization headers, 
+# and credentials for those trusted origins.
+# What we restrict: Blocks the wildcard origin ('*'), untrusted third-party websites, and
+# unnecessary HTTP methods (PUT, DELETE, PATCH) or custom headers.
+# Why: Prevents unauthorized cross-origin browser scripts from calling /predict or uploading
 app.add_middleware(
     CORSMiddleware,
     allow_origins=ALLOWED_ORIGINS,
