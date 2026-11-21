@@ -45,4 +45,3 @@ my mission is to bridge the gap between education and employment in africa by en
      ```bash
      flutter run
      ```
-2023 rows
