@@ -146,9 +146,8 @@ class _PredictionScreenState extends State<PredictionScreen> {
             : TextInputAction.next,
         decoration: InputDecoration(
           labelText: '${field.label} (${field.key})',
-          helperText: '${field.description} ${field.rangeHint}',
-          helperMaxLines: 2,
-          border: const OutlineInputBorder(),
+          helperText: field.helperText,
+          helperMaxLines: 4,
         ),
         validator: (rawValue) {
           final value = rawValue?.trim() ?? '';

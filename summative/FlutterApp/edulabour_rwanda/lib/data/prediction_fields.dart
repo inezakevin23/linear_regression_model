@@ -5,6 +5,7 @@ class PredictionField {
     required this.description,
     required this.minimum,
     required this.maximum,
+    this.options,
   });
 
   final String key;
@@ -12,86 +13,140 @@ class PredictionField {
   final String description;
   final int minimum;
   final int maximum;
-  String get rangeHint => 'Enter a whole number from $minimum to $maximum.';
+  final Map<int, String>? options;
+
+  String get helperText {
+    if (options != null && options!.isNotEmpty) {
+      final formattedOptions = options!.entries
+          .map((e) => '${e.key} = ${e.value}')
+          .join(', ');
+      return '$formattedOptions (Range: $minimum–$maximum)';
+    }
+    return '$description (Range: $minimum–$maximum)';
+  }
 }
+
+const sexOptions = <int, String>{1: 'Male', 2: 'Female'};
+
+const residenceOptions = <int, String>{1: 'Urban', 2: 'Rural'};
+
+const provinceOptions = <int, String>{
+  1: 'Kigali City',
+  2: 'Southern Province',
+  3: 'Western Province',
+  4: 'Northern Province',
+  5: 'Eastern Province',
+};
+
+const maritalStatusOptions = <int, String>{
+  1: 'Never married',
+  2: 'Married',
+  3: 'Cohabiting',
+  4: 'Divorced / Separated',
+  5: 'Widowed',
+};
+
+const educationOptions = <int, String>{
+  1: 'None',
+  2: 'Pre-primary education',
+  3: 'Primary education',
+  4: 'Lower secondary education',
+  5: 'Upper secondary education',
+  6: 'Tertiary / University education',
+};
+
+const yesNoOptions = <int, String>{1: 'Yes', 2: 'No'};
+
+const sectorOptions = <int, String>{
+  1: 'Agriculture, forestry & fishing',
+  2: 'Industry (mining, manufacturing, construction)',
+  3: 'Services (trade, transport, education, health, ICT)',
+};
 
 const List<PredictionField> predictionFields = [
   PredictionField(
     key: 'a04',
     label: 'Age',
-    description: 'Age at last birthday, in years.',
+    description: 'Age at last birthday in completed years',
     minimum: 16,
     maximum: 98,
   ),
   PredictionField(
     key: 'b02b',
     label: 'Completed years of education',
-    description: 'Years completed at the reported education level.',
+    description: 'Years/grade completed at the reported education level',
     minimum: 0,
     maximum: 14,
   ),
   PredictionField(
     key: 'd24',
     label: 'Years of work experience',
-    description: 'Total years the person has been working.',
+    description: 'Total years of work experience / job tenure',
     minimum: 0,
     maximum: 70,
   ),
   PredictionField(
     key: 'a01',
-    label: 'Sex code',
-    description: '1 = Male, 2 = Female (NISR codebook).',
+    label: 'Sex',
+    description: 'Sex code',
     minimum: 1,
     maximum: 2,
+    options: sexOptions,
   ),
   PredictionField(
     key: 'code_ur',
-    label: 'Urban / rural residence code',
-    description: '1 = Urban, 2 = Rural (NISR codebook).',
+    label: 'Urban / rural residence',
+    description: 'Area of residence',
     minimum: 1,
     maximum: 2,
+    options: residenceOptions,
   ),
   PredictionField(
     key: 'province',
-    label: 'Province code',
-    description: '1 = Kigali, 2 = South, 3 = West, 4 = North, 5 = East.',
+    label: 'Province',
+    description: 'Rwanda province',
     minimum: 1,
     maximum: 5,
+    options: provinceOptions,
   ),
   PredictionField(
     key: 'a05',
-    label: 'Marital status code',
-    description: 'Enter the numeric category from the NISR codebook.',
+    label: 'Marital status',
+    description: 'Marital status',
     minimum: 1,
     maximum: 7,
+    options: maritalStatusOptions,
   ),
   PredictionField(
     key: 'b02a',
-    label: 'Highest education level code',
-    description:
-        'Enter the highest education-level category from the NISR codebook.',
+    label: 'Highest education level',
+    description: 'Highest education level',
     minimum: 1,
-    maximum: 8,
+    maximum: 6,
+    options: educationOptions,
   ),
   PredictionField(
     key: 'b07',
-    label: 'Currently attending TVET code',
-    description: 'Enter the response code recorded in the NISR survey.',
+    label: 'Currently attending TVET',
+    description: 'Currently attending trade/technical skills school',
     minimum: 1,
-    maximum: 9,
+    maximum: 2,
+    options: yesNoOptions,
   ),
   PredictionField(
     key: 'b08',
-    label: 'Has learned a TVET course code',
-    description: 'Enter the response code recorded in the NISR survey.',
+    label: 'Has learned a TVET course',
+    description: 'Has completed a TVET course',
     minimum: 1,
-    maximum: 9,
+    maximum: 2,
+    options: yesNoOptions,
   ),
   PredictionField(
     key: 'main_sect',
-    label: 'Main economic sector code',
-    description: 'Enter the NISR ISIC economic-sector code.',
+    label: 'Main economic sector',
+    description: 'Main economic activity sector',
     minimum: 1,
-    maximum: 21,
+    maximum: 3,
+    options: sectorOptions,
   ),
 ];

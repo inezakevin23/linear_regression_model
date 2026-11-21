@@ -47,8 +47,8 @@ class PredictionRequest(BaseModel):
     province: Annotated[StrictInt, Field(ge=1, le=5, description="Rwanda province code (1–5)")]
     a05: Annotated[StrictInt, Field(ge=1, le=7, description="Marital-status code (1–7)")]
     b02a: Annotated[StrictInt, Field(ge=1, le=8, description="Highest education-level code (1–8)")]
-    b07: Annotated[StrictInt, Field(ge=1, le=9, description="Attending trade/technical skills school code (1–9)")]
-    b08: Annotated[StrictInt, Field(ge=1, le=9, description="Completed TVET course code (1–9)")]
+    b07: Annotated[StrictInt, Field(ge=1, le=2, description="Attending trade/technical skills school (1 = Yes, 2 = No)")]
+    b08: Annotated[StrictInt, Field(ge=1, le=2, description="Completed TVET course (1 = Yes, 2 = No)")]
     main_sect: Annotated[StrictInt, Field(ge=1, le=21, description="Main economic-sector code (1–21)")]
 
 
