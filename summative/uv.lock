@@ -592,18 +592,18 @@ dependencies = [
 
 [package.metadata]
 requires-dist = [
-    { name = "fastapi", specifier = ">=0.165.0" },
+    { name = "fastapi" },
     { name = "ipykernel", specifier = ">=7.4.0" },
     { name = "joblib", specifier = ">=1.6.0" },
     { name = "jupyter", specifier = ">=1.1.1" },
     { name = "matplotlib", specifier = ">=3.11.2" },
     { name = "numpy", specifier = ">=2.5.5" },
     { name = "pandas", specifier = ">=3.1.1" },
-    { name = "pydantic", specifier = ">=2.14.3" },
-    { name = "python-multipart", specifier = ">=0.0.34" },
+    { name = "pydantic" },
+    { name = "python-multipart" },
     { name = "scikit-learn", specifier = ">=1.9.1" },
     { name = "seaborn", specifier = ">=0.13.2" },
-    { name = "uvicorn", extras = ["standard"], specifier = ">=0.54.0" },
+    { name = "uvicorn", extras = ["standard"] },
 ]
 
 [[package]]
