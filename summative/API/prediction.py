@@ -17,9 +17,9 @@ API_DIR = Path(__file__).resolve().parent
 MODEL_PATH = Path(os.getenv("MODEL_PATH", str(API_DIR / "best_model.pkl")))
 
 DEFAULT_ORIGINS = (
-    "https://edulabour-rwanda-api.onrender.com,"
-    "http://localhost:5000,"
-    "http://127.0.0.1:5000"
+    "https://edulabour-rwanda-api.onrender.com",    # Deployed Render Swagger UI / web origin
+    "http://localhost:5000",                        # Local Flutter web debug origin
+    "http://127.0.0.1:5000"                         # Local Flutter web loopback debug origin
 )
 ALLOWED_ORIGINS = [
     origin.strip()
